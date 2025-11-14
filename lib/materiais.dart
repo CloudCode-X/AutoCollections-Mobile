@@ -1,0 +1,29 @@
+class MaterialModel {
+  final String nome;
+  final String descricao;
+
+  MaterialModel({required this.nome, this.descricao = ''});
+}
+
+final List<MaterialModel> materiaisMock = [
+  MaterialModel(
+      nome: 'Impressão 3D',
+      descricao:
+          'A impressão 3D revolucionou o automodelismo moderno, permitindo a criação de modelos personalizados e exclusivos com altíssima precisão. Produzidas em PLA, ABS ou resina fotopolimérica, as miniaturas podem ser entregues em versão bruta (para pintura) ou totalmente finalizadas. Esse material oferece leveza, flexibilidade de design e custo acessível, sendo perfeito para projetos criativos e prototipagem.'),
+  MaterialModel(
+      nome: 'Plástico',
+      descricao:
+          'O plástico é o material mais versátil e acessível no automodelismo. Usado em kits de montagem e modelos prontos, ele permite alta variedade de cores, bom nível de detalhe e fácil personalização. Leve e resistente, é muito comum em miniaturas da escala 1:24 e 1:32. Pode ser pintado, colado e adaptado facilmente.'),
+  MaterialModel(
+      nome: 'Metal',
+      descricao:
+          'O Metal é o material mais usado em miniaturas industriais de alta qualidade. Ele proporciona peso realista, resistência e durabilidade, além de permitir detalhes precisos e acabamentos brilhantes. As miniaturas metálicas costumam ter partes móveis (portas, capô, rodas) e pintura automotiva fiel ao modelo original.'),
+  MaterialModel(
+      nome: 'Resina',
+      descricao:
+          'A resina é amplamente utilizada em miniaturas de alto padrão por seu nível de detalhe e acabamento refinado. É um material leve, rígido e capaz de reproduzir superfícies complexas com extrema precisão. As miniaturas em resina são geralmente produzidas em edições limitadas, pintadas manualmente e voltadas ao público colecionador.'),
+  MaterialModel(
+      nome: 'Madeira',
+      descricao:
+          'A madeira é um dos materiais mais tradicionais e elegantes no automodelismo. Usada principalmente em modelos artesanais e decorativos, ela oferece textura natural, acabamento sofisticado e aspecto rústico, valorizando o trabalho manual. As miniaturas em madeira podem ser esculpidas, cortadas a laser ou montadas em MDF, destacando-se pela beleza estética e sustentabilidade.'),
+];
