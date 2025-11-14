@@ -34,56 +34,60 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 90,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      titleSpacing: 8,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 14.0),
-            child: Image.asset(
-              'assets/img/LogoCliente.png',
-              height: 70,
-              width: 70,
-              fit: BoxFit.contain,
-            ),
-          ),
-          Row(
+
+      // ↓ evita overflow horizontal
+      title: LayoutBuilder(
+        builder: (context, constraints) {
+          return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () => _pushNamedReplace(context, '/catalog'),
-                child: Text(
-                  'Catálogo',
-                  style: navStyle(!noSelection && current == '/catalog'),
+              // Logo
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Image.asset(
+                  'assets/img/LogoCliente.png',
+                  height: 70,
+                  width: 70,
+                  fit: BoxFit.contain,
                 ),
               ),
-              const SizedBox(width: 4),
-              TextButton(
-                onPressed: () => _pushNamedReplace(context, '/marcas'),
-                child: Text(
-                  'Marcas',
-                  style: navStyle(!noSelection && current == '/marcas'),
-                ),
-              ),
-              const SizedBox(width: 4),
-              TextButton(
-                onPressed: () => _pushNamedReplace(context, '/categorias'),
-                child: Text(
-                  'Categorias',
-                  style: navStyle(!noSelection && current == '/categorias'),
-                ),
-              ),
-              const SizedBox(width: 4),
-              TextButton(
-                onPressed: () => _pushNamedReplace(context, '/materiais'),
-                child: Text(
-                  'Materiais',
-                  style: navStyle(!noSelection && current == '/materiais'),
+
+              // Opções do menu — agora dentro de Expanded para caber SEM ESTOURAR
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _navButton(
+                          "Catálogo", '/catalog', current, navStyle, context),
+                      const SizedBox(width: 10),
+                      _navButton(
+                          "Marcas", '/marcas', current, navStyle, context),
+                      const SizedBox(width: 10),
+                      _navButton("Categorias", '/categorias', current, navStyle,
+                          context),
+                      const SizedBox(width: 10),
+                      _navButton("Materiais", '/materiais', current, navStyle,
+                          context),
+                    ],
+                  ),
                 ),
               ),
             ],
-          ),
-        ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _navButton(String label, String route, String current,
+      TextStyle Function(bool) style, BuildContext context) {
+    return TextButton(
+      onPressed: () => _pushNamedReplace(context, route),
+      child: Text(
+        label,
+        style: style(!noSelection && current == route),
       ),
     );
   }

@@ -21,12 +21,15 @@ class AutoCollectionsApp extends StatelessWidget {
       title: 'AutoCollections',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFFDF5E6),
-        textTheme: GoogleFonts.montserratTextTheme(),
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color(0xFF7A2E1B),
-        ),
         useMaterial3: true,
+
+        // GARANTE QUE OS ÍCONES FUNCIONEM
+        iconTheme: const IconThemeData(color: Color(0xFF9B2B1F)),
+
+        // Mantém Material Icons funcionando
+        textTheme: GoogleFonts.montserratTextTheme(
+          ThemeData.light().textTheme, // ← Ponto crucial!
+        ),
       ),
       initialRoute: '/',
       routes: {

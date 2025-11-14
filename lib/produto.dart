@@ -14,7 +14,7 @@ class Produto {
   String marca;
   String material;
   int qtdPecas;
-  double avaliacao;
+  int avaliacao;
   int qtdEstoque;
 
   Produto({
@@ -79,7 +79,7 @@ List<Produto> produtosMock = [
         'Miniatura de carro Lamborghini Aventador Roadster, Assembly Line Kit, na escala 1:24. Produzida em metal com detalhes em plástico.',
     imagem: 'assets/img/miniLamboAvent.png',
     preco: 229.90,
-    avaliacao: 4.5,
+    avaliacao: 5,
     escala: '1:24',
     qtdEstoque: 18,
     marca: 'Lamborghini',
