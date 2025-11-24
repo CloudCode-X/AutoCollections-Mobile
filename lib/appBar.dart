@@ -39,7 +39,7 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: Image.asset(
-              'assets/img/LogoCliente.png',
+              'assets/img/logoCliente.png',
               height: 60,
               width: 60,
               fit: BoxFit.contain,

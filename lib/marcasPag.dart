@@ -40,7 +40,7 @@ class MarcasScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Image.asset('assets/img/LogoCliente.png', height: 150),
+                  Image.asset('assets/img/logoCliente.png', height: 150),
                   const SizedBox(height: 30),
                   Padding(
                     padding: EdgeInsets.symmetric(

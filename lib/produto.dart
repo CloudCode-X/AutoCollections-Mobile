@@ -285,7 +285,7 @@ List<Produto> produtosMock = [
     nome: 'Miniatura Personalizável',
     descricao:
         'Dê vida às suas ideias com esta miniatura totalmente personalizável, criada através da mais moderna tecnologia de impressão 3D. Produzida com materiais de alta qualidade, ela permite ajustes de tamanho, cor, detalhes e acabamento, tornando cada peça única e exclusiva.',
-    imagem: 'assets/img/miniIMpress1.png',
+    imagem: 'assets/img/miniImpress1.png',
     preco: 1599.90,
     avaliacao: 5,
     escala: 'personalizável',
