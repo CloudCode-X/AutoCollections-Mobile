@@ -57,6 +57,10 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/data/marcas.json
+    - assets/data/categorias.json
+    - assets/data/materiais.json
+    - assets/data/produtos.json
     - assets/img/logoLamborghini.png
     - assets/img/logoAudi.png
     - assets/img/miniBmwi4.png

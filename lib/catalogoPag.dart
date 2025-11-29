@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'appBar.dart';
 import 'produto.dart';
+import 'produtoService.dart';
 
 class CatalogoScreen extends StatelessWidget {
   const CatalogoScreen({super.key});
@@ -14,57 +15,72 @@ class CatalogoScreen extends StatelessWidget {
     return Scaffold(
       appBar: const AppNavigationBar(),
       backgroundColor: const Color(0xfffff7e8),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final gridWidth = constraints.maxWidth;
-            const crossAxisSpacing = 24.0;
-
-            final cardWidth = (gridWidth - crossAxisSpacing * 1.5) / 2 * 0.9;
-            final cardHeight = cardWidth * 1.32;
-            return ListView(
-              children: [
-                const Text(
-                  'Catálogo',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                    color: Color(0xFF513020),
-                  ),
-                ),
-                const SizedBox(height: 18),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: produtosMock.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: crossAxisSpacing,
-                    mainAxisSpacing: crossAxisSpacing,
-                    childAspectRatio: cardWidth / cardHeight,
-                  ),
-                  itemBuilder: (context, index) {
-                    final item = produtosMock[index];
-                    final whiteCardWidth = cardWidth * 0.85;
-                    final whiteCardHeight = cardHeight * 0.48;
-
-                    return Center(
-                      child: _HoverableCard(
-                        width: cardWidth,
-                        height: cardHeight,
-                        whiteCardWidth: whiteCardWidth,
-                        whiteCardHeight: whiteCardHeight,
-                        produto: item,
-                      ),
-                    );
-                  },
-                ),
-              ],
+      body: FutureBuilder<List<Produto>>(
+        future: ProdutoService().carregarProdutos(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(color: Color(0xFF513020)),
             );
-          },
-        ),
+          }
+
+          final produtos = snapshot.data!;
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final gridWidth = constraints.maxWidth;
+                const crossAxisSpacing = 24.0;
+
+                final cardWidth =
+                    (gridWidth - crossAxisSpacing * 1.5) / 2 * 0.9;
+                final cardHeight = cardWidth * 1.32;
+
+                return ListView(
+                  children: [
+                    const Text(
+                      'Catálogo',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w900,
+                        color: Color(0xFF513020),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: produtos.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: crossAxisSpacing,
+                        mainAxisSpacing: crossAxisSpacing,
+                        childAspectRatio: cardWidth / cardHeight,
+                      ),
+                      itemBuilder: (context, index) {
+                        final item = produtos[index];
+                        final whiteCardWidth = cardWidth * 0.85;
+                        final whiteCardHeight = cardHeight * 0.48;
+
+                        return Center(
+                          child: _HoverableCard(
+                            width: cardWidth,
+                            height: cardHeight,
+                            whiteCardWidth: whiteCardWidth,
+                            whiteCardHeight: whiteCardHeight,
+                            produto: item,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          );
+        },
       ),
     );
   }

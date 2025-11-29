@@ -108,7 +108,6 @@ class ProdutoDescPag extends StatelessWidget {
               ),
               const SizedBox(height: 6),
 
-              // Estrelas cheias e vazias
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: List.generate(5, (index) {
@@ -129,12 +128,11 @@ class ProdutoDescPag extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Cards das opiniões dos clientes
               Wrap(
                 spacing: 12,
                 runSpacing: 12,
                 children: List.generate(
-                  4, // número de opiniões
+                  4,
                   (index) => Container(
                     width: MediaQuery.of(context).size.width * 0.42,
                     padding: const EdgeInsets.all(12),
@@ -158,7 +156,6 @@ class ProdutoDescPag extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // Botão de compra
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFE1BC7B),
@@ -170,9 +167,7 @@ class ProdutoDescPag extends StatelessWidget {
                   ),
                   elevation: 4,
                 ),
-                onPressed: () {
-                  // abrir link de compra
-                },
+                onPressed: () {},
                 child: const Text(
                   "Ir para o site de compra",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

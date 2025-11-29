@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Mercedes-Benz",
+    "descricao": "Mercedes-Benz é uma marca alemã de automóveis de luxo, reconhecida por sua engenharia de alta performance e design sofisticado.",
+    "logoPath": "assets/img/logoMercedes.png"
+  },
+  {
+    "nome": "Porsche",
+    "descricao": "Porsche é uma montadora alemã que une tradição e tecnologia para criar carros esportivos de alto desempenho e elegância.",
+    "logoPath": "assets/img/logoPorsche.png"
+  },
+  {
+    "nome": "BMW",
+    "descricao": "A BMW (Bayerische Motoren Werke) é uma das marcas automotivas mais renomadas do mundo, símbolo de inovação, desempenho e elegância alemã. Fundada em 1916, a BMW iniciou sua história produzindo motores de avião, mas rapidamente se destacou na fabricação de automóveis e motocicletas de alto padrão.",
+    "logoPath": "assets/img/logoBmw.png"
+  },
+  {
+    "nome": "Audi",
+    "descricao": "Audi é uma marca alemã de veículos premium, destacada por sua inovação tecnológica e design moderno.",
+    "logoPath": "assets/img/logoAudi.png"
+  },
+  {
+    "nome": "Lamborghini",
+    "descricao": "Lamborghini é uma fabricante italiana de supercarros de luxo, famosa por seu estilo arrojado e motores poderosos.",
+    "logoPath": "assets/img/logoLamborghini.png"
+  },
+  {
+    "nome": "Maserati",
+    "descricao": "Maserati é uma marca italiana de luxo, símbolo de exclusividade, potência e elegância refinada.",
+    "logoPath": "assets/img/logoMaserati.png"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "nome": "Impressão 3D",
+    "descricao": "A impressão 3D revolucionou o automodelismo moderno, permitindo a criação de modelos personalizados..."
+  },
+  {
+    "nome": "Plástico",
+    "descricao": "O plástico é o material mais versátil e acessível no automodelismo..."
+  },
+  {
+    "nome": "Metal",
+    "descricao": "O Metal é o material mais usado em miniaturas industriais de alta qualidade..."
+  },
+  {
+    "nome": "Resina",
+    "descricao": "A resina é amplamente utilizada em miniaturas de alto padrão..."
+  },
+  {
+    "nome": "Madeira",
+    "descricao": "A madeira é um dos materiais mais tradicionais e elegantes..."
+  }
+]

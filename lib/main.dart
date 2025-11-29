@@ -22,13 +22,9 @@ class AutoCollectionsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-
-        // GARANTE QUE OS ÍCONES FUNCIONEM
         iconTheme: const IconThemeData(color: Color(0xFF9B2B1F)),
-
-        // Mantém Material Icons funcionando
         textTheme: GoogleFonts.montserratTextTheme(
-          ThemeData.light().textTheme, // ← Ponto crucial!
+          ThemeData.light().textTheme,
         ),
       ),
       initialRoute: '/',
