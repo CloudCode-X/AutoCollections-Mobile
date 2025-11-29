@@ -21,12 +21,36 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final current = ModalRoute.of(context)?.settings.name ?? '';
+    final largura = MediaQuery.of(context).size.width;
+
+    // 🔥 Fonte responsiva: maior em telas médias/grandes
+    double fontSize;
+    if (largura < 390) {
+      fontSize = 13.8; // celulares muito estreitos
+    } else if (largura < 500) {
+      fontSize = 14.5; // celulares comuns
+    } else {
+      fontSize = 15.5; // desktop / tablet
+    }
 
     TextStyle navStyle(bool selected) => TextStyle(
           color: selected ? const Color(0xFFE1BC7B) : Colors.white,
           fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
-          fontSize: 15,
+          fontSize: fontSize,
         );
+
+    // 🔥 Logo responsiva
+    double logoSize;
+    if (largura < 390) {
+      logoSize = 50;
+    } else if (largura < 500) {
+      logoSize = 58;
+    } else {
+      logoSize = 65;
+    }
+
+    // 🔥 Largura máxima da área dos botões
+    double maxRowWidth = largura < 500 ? largura * 0.80 : 450;
 
     return AppBar(
       backgroundColor: const Color(0xFF9B2B1F),
@@ -40,8 +64,8 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.only(right: 10),
             child: Image.asset(
               'assets/img/logoCliente.png',
-              height: 60,
-              width: 60,
+              height: logoSize,
+              width: logoSize,
               fit: BoxFit.contain,
             ),
           ),
@@ -49,27 +73,23 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
             child: Align(
               alignment: Alignment.center,
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 450,
+                constraints: BoxConstraints(
+                  maxWidth: maxRowWidth,
                 ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _navButton(
-                          "Catálogo", '/catalog', current, navStyle, context),
-                      const SizedBox(width: 6),
-                      _navButton(
-                          "Marcas", '/marcas', current, navStyle, context),
-                      const SizedBox(width: 6),
-                      _navButton("Categorias", '/categorias', current, navStyle,
-                          context),
-                      const SizedBox(width: 6),
-                      _navButton("Materiais", '/materiais', current, navStyle,
-                          context),
-                    ],
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _navButton(
+                        "Catálogo", '/catalog', current, navStyle, context),
+                    SizedBox(width: largura < 390 ? 3 : 5),
+                    _navButton("Marcas", '/marcas', current, navStyle, context),
+                    SizedBox(width: largura < 390 ? 3 : 5),
+                    _navButton("Categorias", '/categorias', current, navStyle,
+                        context),
+                    SizedBox(width: largura < 390 ? 3 : 5),
+                    _navButton(
+                        "Materiais", '/materiais', current, navStyle, context),
+                  ],
                 ),
               ),
             ),
@@ -84,7 +104,7 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
     return TextButton(
       style: ButtonStyle(
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         ),
         minimumSize: WidgetStateProperty.all(const Size(0, 0)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,

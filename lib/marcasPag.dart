@@ -63,7 +63,8 @@ class _MarcasScreenState extends State<MarcasScreen> {
           return LayoutBuilder(
             builder: (context, constraints) {
               final screenWidth = constraints.maxWidth;
-              final crossAxisCount = (screenWidth ~/ 220).clamp(1, 4);
+
+              const crossAxisCount = 2;
 
               return SingleChildScrollView(
                 child: Padding(
@@ -89,7 +90,7 @@ class _MarcasScreenState extends State<MarcasScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: crossAxisCount,
                             crossAxisSpacing: 16,
                             mainAxisSpacing: 16,

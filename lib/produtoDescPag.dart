@@ -29,7 +29,6 @@ class ProdutoDescPag extends StatelessWidget {
       "Excelente custo-benefício."
     ];
 
-    // embaralha e pega 4 comentários diferentes
     comentarios.shuffle(Random());
     return comentarios.take(4).toList();
   }
@@ -154,7 +153,6 @@ class ProdutoDescPag extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Comentários variados e automáticos
               Wrap(
                 spacing: 12,
                 runSpacing: 12,
@@ -182,7 +180,6 @@ class ProdutoDescPag extends StatelessWidget {
               ),
 
               const SizedBox(height: 24),
-              // botão removido ✔
             ],
           ),
         ),
