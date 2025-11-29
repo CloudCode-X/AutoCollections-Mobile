@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'appBar.dart';
@@ -10,8 +12,32 @@ class ProdutoDescPag extends StatelessWidget {
 
   const ProdutoDescPag({super.key, required this.produto});
 
+  // Comentários variados automáticos
+  List<String> _gerarComentarios() {
+    final comentarios = [
+      "Produto excelente, qualidade surpreendente!",
+      "Muito bom, recomendo demais.",
+      "Atendeu exatamente o que eu precisava.",
+      "Design bonito e material muito resistente.",
+      "Preço justo pelo que oferece.",
+      "Entrega rápida e produto impecável.",
+      "Acabamento muito bem feito.",
+      "Durou mais do que eu esperava, muito satisfeito.",
+      "Ótima funcionalidade e fácil de usar.",
+      "Voltaria a comprar sem dúvidas!",
+      "Superou minhas expectativas!",
+      "Excelente custo-benefício."
+    ];
+
+    // embaralha e pega 4 comentários diferentes
+    comentarios.shuffle(Random());
+    return comentarios.take(4).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final comentarios = _gerarComentarios();
+
     return Scaffold(
       appBar: const AppNavigationBar(),
       backgroundColor: const Color(0xFFFFF7E8),
@@ -128,12 +154,12 @@ class ProdutoDescPag extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
+              // Comentários variados e automáticos
               Wrap(
                 spacing: 12,
                 runSpacing: 12,
-                children: List.generate(
-                  4,
-                  (index) => Container(
+                children: comentarios.map((texto) {
+                  return Container(
                     width: MediaQuery.of(context).size.width * 0.42,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -147,33 +173,16 @@ class ProdutoDescPag extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Text(
-                      'Excelente produto! Superou expectativas.',
-                      style: TextStyle(fontSize: 13),
+                    child: Text(
+                      texto,
+                      style: const TextStyle(fontSize: 13),
                     ),
-                  ),
-                ),
+                  );
+                }).toList(),
               ),
-              const SizedBox(height: 24),
 
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFE1BC7B),
-                  foregroundColor: Colors.black,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 4,
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Ir para o site de compra",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-              ),
               const SizedBox(height: 24),
+              // botão removido ✔
             ],
           ),
         ),
