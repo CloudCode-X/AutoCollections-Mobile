@@ -23,14 +23,13 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
     final current = ModalRoute.of(context)?.settings.name ?? '';
     final largura = MediaQuery.of(context).size.width;
 
-    // 🔥 Fonte responsiva: maior em telas médias/grandes
     double fontSize;
     if (largura < 390) {
-      fontSize = 13.8; // celulares muito estreitos
+      fontSize = 13.8;
     } else if (largura < 500) {
-      fontSize = 14.5; // celulares comuns
+      fontSize = 14.5;
     } else {
-      fontSize = 15.5; // desktop / tablet
+      fontSize = 15.5;
     }
 
     TextStyle navStyle(bool selected) => TextStyle(
@@ -39,7 +38,6 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
           fontSize: fontSize,
         );
 
-    // 🔥 Logo responsiva
     double logoSize;
     if (largura < 390) {
       logoSize = 50;
@@ -49,8 +47,8 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
       logoSize = 65;
     }
 
-    // 🔥 Largura máxima da área dos botões
     double maxRowWidth = largura < 500 ? largura * 0.80 : 450;
+    double spacing = largura < 390 ? 2 : largura < 500 ? 4 : 6;
 
     return AppBar(
       backgroundColor: const Color(0xFF9B2B1F),
@@ -76,20 +74,24 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
                 constraints: BoxConstraints(
                   maxWidth: maxRowWidth,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _navButton(
-                        "Catálogo", '/catalog', current, navStyle, context),
-                    SizedBox(width: largura < 390 ? 3 : 5),
-                    _navButton("Marcas", '/marcas', current, navStyle, context),
-                    SizedBox(width: largura < 390 ? 3 : 5),
-                    _navButton("Categorias", '/categorias', current, navStyle,
-                        context),
-                    SizedBox(width: largura < 390 ? 3 : 5),
-                    _navButton(
-                        "Materiais", '/materiais', current, navStyle, context),
-                  ],
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _navButton(
+                          "Catálogo", '/catalog', current, navStyle, context, largura),
+                      SizedBox(width: spacing),
+                      _navButton(
+                          "Marcas", '/marcas', current, navStyle, context, largura),
+                      SizedBox(width: spacing),
+                      _navButton("Categorias", '/categorias', current, navStyle,
+                          context, largura),
+                      SizedBox(width: spacing),
+                      _navButton("Materiais", '/materiais', current, navStyle,
+                          context, largura),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -100,11 +102,14 @@ class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _navButton(String label, String route, String current,
-      TextStyle Function(bool) style, BuildContext context) {
+      TextStyle Function(bool) style, BuildContext context, double largura) {
     return TextButton(
       style: ButtonStyle(
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+          EdgeInsets.symmetric(
+            horizontal: largura < 390 ? 6 : 8,
+            vertical: 5,
+          ),
         ),
         minimumSize: WidgetStateProperty.all(const Size(0, 0)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
