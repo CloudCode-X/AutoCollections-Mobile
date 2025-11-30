@@ -105,7 +105,7 @@
   },
   {
     "nome": "Miniatura Maserati Quattroporte 2003",
-    "descricao": "A miniatura Maserati Quattroporte é uma reprodução fiel do sedã de luxo italiano que combina potência, sofisticação e design atemporal. Conhecido por seu equilíbrio entre desempenho esportivo e conforto refinado, o Quattroporte é um ícone da engenharia automotiva da Maserati — e essa miniatura traduz perfeitamente toda essa essência em detalhes.",
+    "descricao": "A miniatura Maserati Quattroporte é uma reprodução fiel do sedã de luxo italiano que combina potência, sofisticação e design atemporal. Conhecido por seu equilíbrio entre desempenho esportivo e conforto refinado, o Quattroporte é um ícone da engenharia automotiva da Maserati, e essa miniatura traduz perfeitamente toda essa essência em detalhes.",
     "imagem": "assets/img/miniMaseratiQuattro.png",
     "preco": 349.9,
     "avaliacao": 5,
@@ -228,7 +228,7 @@
     "avaliacao": 5,
     "escala": "1:18",
     "categoria": "Montável",
-    "marca": "Ferrari",
+    "marca": "Audi",
     "material": "Metal",
     "qtdPecas": 1,
     "qtdEstoque": 24
